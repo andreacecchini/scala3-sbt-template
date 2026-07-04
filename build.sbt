@@ -12,9 +12,15 @@ Global / onLoad := { s =>
   "git config core.hooksPath .githooks".!
   s
 }
-
+/*
+ * Change the name with yours.
+ */
+val projectName = "scala3-sbt-template"
+/*
+ * Root project.
+ */
 lazy val root = project.in(file("."))
   .settings(
-    name := "scala3-sbt-template",
+    name := projectName,
     libraryDependencies += scalaTest % Test
   )
