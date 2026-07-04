@@ -1,0 +1,6 @@
+#!/bin/sh
+sbt scalafmtCheck
+if [ $? -ne 0 ]; then
+  echo "Code is not formatted. Run 'sbt scalafmt' and try again."
+  exit 1
+fi
