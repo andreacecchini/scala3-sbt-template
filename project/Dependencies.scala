@@ -3,7 +3,7 @@ import sbt.*
 object Dependencies:
   object Versions:
     val scalaTest = "3.2.20"
-  /**
-   * ScalaTes.
-   */
+
+  /** ScalaTes.
+    */
   val scalaTest: ModuleID = "org.scalatest" %% "scalatest" % Versions.scalaTest
