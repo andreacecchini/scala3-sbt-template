@@ -1,9 +1,12 @@
 import Dependencies.*
 import scala.sys.process.stringToProcess
 
-ThisBuild / scalaVersion := "3.8.1"
-ThisBuild / semanticdbEnabled := true
-ThisBuild / scalacOptions ++= Seq("-Werror", "-Wall", "-Wunused:all")
+/*
+ * Global settings
+ */
+scalaVersion := "3.8.1"
+semanticdbEnabled := true
+scalacOptions ++= Seq("-Werror", "-Wall", "-Wunused:all")
 
 /*
  * Ensuring hooks path is always set every time sbt starts.
@@ -19,7 +22,8 @@ val projectName = "scala3-sbt-template"
 /*
  * Root project.
  */
-lazy val root = project.in(file("."))
+lazy val root = project
+  .in(file("."))
   .settings(
     name := projectName,
     libraryDependencies += scalaTest % Test
