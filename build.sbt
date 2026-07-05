@@ -2,12 +2,18 @@ import Dependencies.*
 import scala.sys.process.stringToProcess
 
 /*
- * Global settings
+ * Language settings
  */
 scalaVersion := "3.8.1"
-semanticdbEnabled := true
 scalacOptions ++= Seq("-Werror", "-Wall", "-Wunused:all")
-
+/*
+ * Scalafix settings
+ */
+semanticdbEnabled := true
+/*
+ * Scoverage settings
+ */
+// TODO: configure scoverage
 /*
  * Ensuring hooks path is always set every time sbt starts.
  */
