@@ -20,5 +20,5 @@ Global / onLoad := { s =>
   s
 }
 
-addCommandAlias("check", "; scalafmtCheckAll; scalafixAll --check; test")
-addCommandAlias("build", "; clean; check; doc; assembly")
+addCommandAlias("check", "; clean; scalafmtCheckAll; scalafixAll --check; test")
+addCommandAlias("build", "; check; doc; assembly")
