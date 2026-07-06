@@ -1,5 +1,8 @@
 # IDE files
 .idea/
+.vscode/
 # Build files
 target/
+.metals/
+.bloop/
 .bsp/
