@@ -1,11 +1,14 @@
 #!/bin/sh
-EXIT=0
 
-sbt check
+echo "Checking code formatting and linting..."
+
+sbt "scalafmtCheckAll; scalafixAll --check"
 if [ $? -ne 0 ]; then
   echo ""
-  echo "[FAIL] Pre-commit checks failed: static or dynamic verification failed..."
-  EXIT=1
+  echo "[FAIL] Formatting or linting checks failed."
+  echo "Run 'sbt scalafmtAll scalafixAll' in your terminal to fix them automatically."
+  exit 1
 fi
 
-exit $EXIT
+echo "[SUCCESS] Code looks clean. Proceeding with commit."
+exit 0
