@@ -1,17 +1,10 @@
 #!/bin/sh
 EXIT=0
 
-sbt scalafmtCheckAll
+sbt check
 if [ $? -ne 0 ]; then
   echo ""
-  echo "[FAIL] scalafmt: Code is not formatted. Run 'sbt scalafmt' to fix."
-  EXIT=1
-fi
-
-sbt "scalafixAll --check"
-if [ $? -ne 0 ]; then
-  echo ""
-  echo "[FAIL] scalafix: Linting issues found. Run 'sbt scalafixAll' to fix."
+  echo "[FAIL] Pre-commit checks failed: static or dynamic verification failed..."
   EXIT=1
 fi
 
