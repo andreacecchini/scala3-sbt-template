@@ -2,8 +2,9 @@ import Dependencies.*
 import scala.sys.process.stringToProcess
 
 /*
- * Language settings
+ * Project settings
  */
+val projectName = "scala3-sbt-template"
 scalaVersion := "3.8.1"
 scalacOptions ++= Seq("-Werror", "-Wall", "-Wunused:all")
 /*
@@ -21,10 +22,6 @@ Global / onLoad := { s =>
   "git config core.hooksPath .githooks".!
   s
 }
-/*
- * Change the name with yours.
- */
-val projectName = "scala3-sbt-template"
 /*
  * Root project.
  */
