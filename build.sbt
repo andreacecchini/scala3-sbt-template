@@ -2,39 +2,23 @@ import Dependencies.*
 import sbtassembly.AssemblyPlugin.autoImport.*
 import scala.sys.process.stringToProcess
 
-/*
- * Project settings
- */
-val projectName = "scala3-sbt-template"
-scalaVersion := "3.8.1"
-scalacOptions ++= Seq("-Werror", "-Wall", "-Wunused:all")
-/*
- * Scalafix settings
- */
-semanticdbEnabled := true
-/*
- * Scoverage settings
- */
-// TODO: configure scoverage
-/*
- * Ensuring hooks path is always set every time sbt starts.
- */
+
+ThisBuild / scalaVersion := "3.8.1"
+ThisBuild / scalacOptions ++= Seq("-Werror", "-Wall", "-Wunused:all")
+ThisBuild / semanticdbEnabled := true
+
+lazy val root = (project in file("."))
+  .settings(
+    name := "scala3-sbt-template",
+    libraryDependencies += scalaTest,
+    assembly / mainClass := Some("Main"),
+    assembly / assemblyJarName := s"${name.value}-${version.value}-fat.jar",
+  )
+
 Global / onLoad := { s =>
   "git config core.hooksPath .githooks".!
   s
 }
-/*
- * Root project.
- */
-lazy val root = project
-  .in(file("."))
-  .settings(
-    name := projectName,
-    libraryDependencies += scalaTest % Test,
-    assembly / mainClass := Some("Main"),
-    assembly / assemblyJarName := s"${name.value}-${version.value}-fat.jar",
-  )
-/*
- * Command aliases.
- */
+
 addCommandAlias("check", "; scalafmtCheckAll; scalafixAll --check; test")
+addCommandAlias("build", "; clean; check; doc; assembly")

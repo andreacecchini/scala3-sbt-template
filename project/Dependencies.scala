@@ -6,4 +6,4 @@ object Dependencies:
 
   /** ScalaTest.
     */
-  val scalaTest: ModuleID = "org.scalatest" %% "scalatest" % Versions.scalaTest
+  val scalaTest: ModuleID = "org.scalatest" %% "scalatest" % Versions.scalaTest % Test
