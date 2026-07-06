@@ -31,3 +31,7 @@ lazy val root = project
     name := projectName,
     libraryDependencies += scalaTest % Test
   )
+/*
+ * Command aliases.
+ */
+addCommandAlias("check", "; scalafmtCheckAll; scalafixAll --check; test")
