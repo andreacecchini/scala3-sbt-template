@@ -1,4 +1,5 @@
 import Dependencies.*
+import sbtassembly.AssemblyPlugin.autoImport.*
 import scala.sys.process.stringToProcess
 
 /*
@@ -29,7 +30,9 @@ lazy val root = project
   .in(file("."))
   .settings(
     name := projectName,
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += scalaTest % Test,
+    assembly / mainClass := Some("Main"),
+    assembly / assemblyJarName := s"${name.value}-${version.value}-fat.jar",
   )
 /*
  * Command aliases.
